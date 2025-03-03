@@ -1,0 +1,13 @@
+pipeline {
+	agent none
+	environment {
+		DOCKERHUB_CREDENTIALS = credentials('DockerLogin')
+	}
+	stages {
+	   stage('Build') {
+	       agent {
+		   docker {
+		       image 'node:lts-buster-slim'
+		   }
+		}
+	}
